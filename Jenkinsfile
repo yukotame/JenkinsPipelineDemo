@@ -17,6 +17,10 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying'
+                sshagent(['jenkins']) {
+                      sh 'scp  /var/lib/jenkins/workspace/JenkinsPipeline  sakitamefusa@localhost:/home/app_saki/test-env-jenkins'
+                }
+                
             }
         }
         

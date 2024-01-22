@@ -17,8 +17,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying'
-                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'MySSH', \
-                                            
+                withCredentials(bindings: [sshUserPrivateKey(credentialsId: 'MySSH', \                                            
                                              passphraseVariable: 'yuko1124', \
                                              usernameVariable: 'sakitamefusa')]) {
   // some block

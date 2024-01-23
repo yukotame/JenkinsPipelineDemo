@@ -17,17 +17,14 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying'
- withCredentials([usernamePassword(credentialsId: 'MySSH', passwordVariable: 'yuko1124', usernameVariable: 'sakitamefusa')]) {
-        remote.user = sakitamefusa
-        remote.password = yuko1124
 
-        stage("SSH Steps Rocks!") {
-
-        }
-                
+                sshagent(credentials: ['MySSH']) 
+                {
+                    sh 'pwd' 
+                }
             }
         }
-        
+
         stage('Test') {
             steps {
                 echo 'Testing'
